@@ -1,4 +1,4 @@
-# Vera — magicpin Merchant AI · Harshit Bindal
+# Vera — magicpin Merchant AI
 
 **Principle: decide deterministically, write with an LLM, verify before anything is sent.**
 
