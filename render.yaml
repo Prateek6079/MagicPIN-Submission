@@ -1,0 +1,31 @@
+# Render Blueprint — free web service.
+# Dashboard: New + > Blueprint > pick this repo. Then set GROQ_API_KEY in the service's Environment tab.
+services:
+  - type: web
+    name: vera-magicpin-bot
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn bot:app --host 0.0.0.0 --port $PORT --workers 1 --timeout-keep-alive 75
+    healthCheckPath: /v1/healthz
+    autoDeploy: false          # never redeploy (= wipe in-memory state) during a judging window
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      - key: GROQ_API_KEY
+        sync: false            # set the secret value in the dashboard
+      - key: LLM_MODELS
+        value: openai/gpt-oss-120b,qwen/qwen3.8-27b,openai/gpt-oss-20b
+      - key: COMPOSE_MODELS
+        value: openai/gpt-oss-120b,qwen/qwen3.8-27b
+      - key: TEAM_NAME
+        value: Harshit Bindal
+      - key: TEAM_MEMBERS
+        value: Harshit Bindal
+      - key: BOT_VERSION
+        value: "1.0.0"
+      - key: PERSIST_SNAPSHOTS
+        value: "false"
+      - key: LOG_LEVEL
+        value: INFO

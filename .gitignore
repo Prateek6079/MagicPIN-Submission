@@ -1,0 +1,10 @@
+.env
+state/
+__pycache__/
+*.pyc
+.pytest_cache/
+scripts/out/
+challenge/expanded/
+.venv/
+venv/
+magicpin-ai-challenge.zip
